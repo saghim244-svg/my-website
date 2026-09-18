@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سوالات کالاف دیوتی</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Tahoma,Arial,sans-serif;
+    background:#03070d;
+    color:white;
+    min-height:100vh;
+}
+
+/* پس زمینه */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+
+    background:
+    radial-gradient(circle at 50% 10%,#06315c 0%,transparent 35%),
+    radial-gradient(circle at 10% 80%,#001a35 0%,transparent 30%),
+    #03070d;
+}
+
+/* =========================
+   صفحه خوش آمدگویی
+========================= */
+
+.welcome{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:25px;
+}
+
+.welcome-box{
+    width:100%;
+    max-width:650px;
+
+    padding:40px 25px;
+
+    background:rgba(7,14,24,.90);
+
+    border:1px solid #008cff;
+
+    border-radius:22px;
+
+    box-shadow:
+    0 0 45px rgba(0,140,255,.18);
+}
+
+.welcome h1{
+    font-size:38px;
+    color:#00aaff;
+
+    margin-bottom:20px;
+}
+
+.welcome p{
+    color:#c8c8c8;
+
+    line-height:2;
+
+    font-size:16px;
+
+    margin-bottom:28px;
+}
+
+/* =========================
+   ورود اسم
+========================= */
+
+.name-box{
+    margin:20px 0;
+}
+
+.name-box input{
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:12px;
+
+    border:1px solid #14527d;
+
+    background:#050b13;
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+    text-align:center;
+}
+
+.name-box input:focus{
+
+    border-color:#00aaff;
+
+    box-shadow:
+    0 0 15px rgba(0,170,255,.2);
+}
+
+/* =========================
+   دکمه ها
+========================= */
+
+.btn{
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    background:#008cff;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+    margin:7px;
+}
+
+.btn:hover{
+
+    background:#00aaff;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 8px 25px rgba(0,140,255,.25);
+}
+
+#startBtn{
+    display:none;
+}
+
+/* =========================
+   بخش سوالات
+========================= */
+
+.questions{
+
+    display:none;
+
+    max-width:850px;
+
+    margin:auto;
+
+    padding:35px 18px 60px;
+}
+
+.questions-title{
+
+    text-align:center;
+
+    margin-bottom:35px;
+}
+
+.questions-title h2{
+
+    color:#00aaff;
+
+    font-size:32px;
+
+    margin-bottom:12px;
+}
+
+.questions-title p{
+
+    color:#999;
+}
+
+/* =========================
+   کارت سوال
+========================= */
+
+.question{
+
+    background:rgba(7,14,24,.94);
+
+    border:1px solid #123b5d;
+
+    border-radius:18px;
+
+    padding:24px;
+
+    margin-bottom:20px;
+
+    box-shadow:
+    0 5px 25px rgba(0,0,0,.25);
+}
+
+.question h3{
+
+    color:#00aaff;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+}
+
+/* =========================
+   گزینه ها
+========================= */
+
+.options{
+
+    display:grid;
+
+    gap:10px;
+}
+
+.option{
+
+    display:block;
+
+    padding:14px 16px;
+
+    background:#09131f;
+
+    border:1px solid #163b58;
+
+    border-radius:11px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    color:#ddd;
+}
+
+.option:hover{
+
+    border-color:#008cff;
+
+    background:#0b1c2d;
+}
+
+.option input{
+
+    margin-left:10px;
+
+    accent-color:#008cff;
+}
+
+/* =========================
+   دکمه ثبت
+========================= */
+
+.finish{
+
+    text-align:center;
+
+    margin-top:30px;
+}
+
+.finish button{
+
+    padding:15px 45px;
+}
+
+/* =========================
+   پیام آخر
+========================= */
+
+.message{
+
+    display:none;
+
+    text-align:center;
+
+    margin-top:25px;
+
+    padding:20px;
+
+    background:#071a29;
+
+    border:1px solid #008cff;
+
+    border-radius:15px;
+
+    color:#00aaff;
+
+    line-height:2;
+}
+
+/* =========================
+   موبایل
+========================= */
+
+@media(max-width:600px){
+
+    .welcome h1{
+
+        font-size:29px;
+    }
+
+    .welcome-box{
+
+        padding:32px 18px;
+    }
+
+    .questions-title h2{
+
+        font-size:27px;
+    }
+
+    .question{
+
+        padding:20px 15px;
+    }
+
+    .question h3{
+
+        font-size:16px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     صفحه اول
+================================= -->
+
+<section class="welcome" id="welcome">
+
+    <div class="welcome-box">
+
+        <h1>
+            به سایت خوش اومدید 👋
+        </h1>
+
+        <p>
+            این سایت از شما سوال‌های مربوط به کالاف می‌پرسد،
+            لطفاً به آن‌ها پاسخ دهید!
+        </p>
+
+
+        <div class="name-box">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="اسم خود را وارد کنید ..."
+            >
+
+            <br>
+
+            <button
+                class="btn"
+                onclick="confirmName()"
+            >
+                تأیید ✅
+            </button>
+
+        </div>
+
+
+        <button
+            class="btn"
+            id="startBtn"
+            onclick="startQuestions()"
+        >
+            برو بریم 🚀
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================
+     بخش سوالات
+================================= -->
+
+<section
+    class="questions"
+    id="questions"
+>
+
+
+    <div class="questions-title">
+
+        <h2>
+            سوالات کالاف 🎮
+        </h2>
+
+        <p id="hello"></p>
+
+    </div>
+
+
+
+    <!-- =========================
+         سوال اول
+    ========================== -->
+
+    <div class="question">
+
+        <h3>
+            سوال اول:
+            شما در کالاف اسنایپ پلیر هستید یا شاتگان پلیر؟
+        </h3>
+
+
+        <div class="options">
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="شاتگان پلیر هستم"
+                >
+
+                🔫 شاتگان پلیر هستم
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="اسنایپ پلیر هستم"
+                >
+
+                🎯 اسنایپ پلیر هستم
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         سوال دوم
+    ========================== -->
+
+    <div class="question">
+
+        <h3>
+            سوال دوم:
+            شما در کالاف مولتی پلیر هستید یا بتل؟
+        </h3>
+
+
+        <div class="options">
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="مولتی پلیر"
+                >
+
+                🎮 مولتی پلیر هستم
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="بتل رویال"
+                >
+
+                🪂 بتل رویال پلیر هستم
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         سوال سوم
+    ========================== -->
+
+    <div class="question">
+
+        <h3>
+            سوال سوم:
+            در اکانت شما چندتا لجند پولی وجود دارد؟
+        </h3>
+
+
+        <div class="options">
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="1 تا 3 عدد"
+                >
+
+                1 تا 3 عدد
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="4 تا 6 عدد"
+                >
+
+                4 تا 6 عدد
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="7 به بالا"
+                >
+
+                7 به بالا
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         سوال چهارم
+    ========================== -->
+
+    <div class="question">
+
+        <h3>
+            سوال چهار:
+            شما از بین سه متیک رایگانه کدوم را انتخاب می‌کنید؟
+        </h3>
+
+
+        <div class="options">
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="BAL 27"
+                >
+
+                🔫 BAL 27
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="Static-HV"
+                >
+
+                🔫 Static-HV
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="ISO"
+                >
+
+                🔫 ISO
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         سوال پنجم
+    ========================== -->
+
+    <div class="question">
+
+        <h3>
+            سوال پنج:
+            اکانت شما چند بار بتل را لجند کرده است؟
+        </h3>
+
+
+        <div class="options">
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="1 بار"
+                >
+
+                1 بار
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="2 بار"
+                >
+
+                2 بار
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="3 بار"
+                >
+
+                3 بار
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="4 تا 6"
+                >
+
+                4 تا 6
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="بالای 7 تا"
+                >
+
+                بالای 7 تا 🗿
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         سوال ششم
+    ========================== -->
+
+    <div class="question">
+
+        <h3>
+            سوال ششم:
+            مولتی را چقدر لجند کردید؟
+        </h3>
+
+
+        <div class="options">
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="0 بار"
+                >
+
+                0 بار
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="1 بار"
+                >
+
+                1 بار
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="2 بار"
+                >
+
+                2 بار
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="3 بار"
+                >
+
+                3 بار
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="4 تا 6 بار"
+                >
+
+                4 تا 6 بار
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="بالای 7 تا"
+                >
+
+                بالای 7 تا 🗿🤙
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         سوال هفتم
+    ========================== -->
+
+    <div class="question">
+
+        <h3>
+            سوال هفتم:
+            چند بار بتل پس زدی؟
+        </h3>
+
+
+        <div class="options">
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="0"
+                >
+
+                0
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="1"
+                >
+
+                1
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="2"
+                >
+
+                2
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="3"
+                >
+
+                3
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="4"
+                >
+
+                4
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="5"
+                >
+
+                5
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="بالای 6 تا"
+                >
+
+                بالای 6 تا 🗿
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         ثبت پاسخ ها
+    ========================== -->
+
+    <div class="finish">
+
+        <button
+            class="btn"
+            onclick="finishQuiz()"
+        >
+            ثبت پاسخ‌ها ✅
+        </button>
+
+    </div>
+
+
+    <div
+        class="message"
+        id="message"
+    ></div>
+
+
+</section>
+
+
+
+<script>
+
+/* =========================
+   تأیید اسم
+========================= */
+
+function confirmName(){
+
+    let name =
+        document
+        .getElementById("name")
+        .value
+        .trim();
+
+
+    if(name === ""){
+
+        alert(
+            "لطفاً اول اسم خود را وارد کنید! 😅"
+        );
+
+        return;
+    }
+
+
+    document
+    .getElementById("startBtn")
+    .style.display = "inline-block";
+
+
+    document
+    .getElementById("startBtn")
+    .scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+}
+
+
+/* =========================
+   شروع سوالات
+========================= */
+
+function startQuestions(){
+
+    let name =
+        document
+        .getElementById("name")
+        .value
+        .trim();
+
+
+    document
+    .getElementById("welcome")
+    .style.display = "none";
+
+
+    document
+    .getElementById("questions")
+    .style.display = "block";
+
+
+    document
+    .getElementById("hello")
+    .innerHTML =
+        "خب " +
+        name +
+        " جان، بریم ببینیم چیکاره‌ای 😎🎮";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   پایان
+========================= */
+
+function finishQuiz(){
+
+    let name =
+        document
+        .getElementById("name")
+        .value
+        .trim();
+
+
+    document
+    .getElementById("message")
+    .style.display = "block";
+
+
+    document
+    .getElementById("message")
+    .innerHTML =
+        "دمت گرم " +
+        name +
+        " 🗿🔥<br>" +
+        "پاسخ‌هات ثبت شد!";
+
+
+    document
+    .getElementById("message")
+    .scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+}
+
+</script>
+
+</body>
+
+  </html>
